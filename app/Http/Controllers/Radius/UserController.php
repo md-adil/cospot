@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = RadUser::where('attribute', 'Password')->paginate();
+        $users = RadUser::where('attribute', 'Cleartext-Password')->paginate();
         return view('radius.users.index', compact('users'));
     }
 
@@ -38,9 +38,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         RadUser::create([
-            'UserName' => $request->username,
-            'Attribute' => 'Password',
-            'Value' => $request->password
+            'username' => $request->username,
+            'attribute' => 'Cleartext-Password',
+            'op' => ':=',
+            'value' => $request->password
         ]);
         return back()->with('success', 'User has been created');
     }
@@ -77,8 +78,8 @@ class UserController extends Controller
     public function update(Request $request, RadUser $user)
     {
         $user->update([
-            'UserName' => $request->username,
-            'Value' => $request->password
+            'username' => $request->username,
+            'value' => $request->password
         ]);
         return back()->with('success', 'User has been update');
     }

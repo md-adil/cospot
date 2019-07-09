@@ -5,7 +5,7 @@
         @include('layouts.alert')
         <div class="card">
             <div class="card-header">
-                All users
+                All users - total {{ $users->total() }}
             </div>
             <div class="card-body">
                 <a href="{{route('radius.users.create')}}">Create new user</a>
