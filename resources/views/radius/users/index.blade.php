@@ -20,8 +20,8 @@
                     <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <td>{{$user->UserName}}</td>
-                                <td>{{$user->Value}}</td>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->value}}</td>
                                 <td>
                                 <a href="{{route('radius.users.edit',['user'=>$user])}}" class="btn btn-secondary btn-sm">Edit</a>
                                     <a href="{{route('radius.users.destroy',['user'=>$user])}}" onclick="return destroy(this)" class="btn btn-danger btn-sm">Delete</a>
